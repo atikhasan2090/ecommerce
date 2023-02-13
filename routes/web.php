@@ -1,7 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Homecontroller;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\AdminController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,9 +15,11 @@ use App\Http\Controllers\Homecontroller;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('home.userpage');
+// });
+
+Route::get('/',[HomeController::Class,'index']);
 
 Route::middleware([
     'auth:sanctum',
@@ -28,5 +31,29 @@ Route::middleware([
     })->name('dashboard');
 });
 
+Route::get('/redirect', [HomeController::Class , 'redirect']);
 
-Route::get('/redirect', [Homecontroller::Class , "redirect"]);
+Route::get('/welcome', function () {
+    return view('welcome');
+});
+
+Route::get('/view_category', [AdminController::Class , 'view_category']);
+Route::post('/add_category', [AdminController::Class , 'add_category']);
+Route::get('/delete_category/{id}', [AdminController::Class , 'delete_category']);
+
+Route::get('/view_product', [AdminController::Class , 'view_product']);
+Route::post('/add_product', [AdminController::Class , 'add_product']);
+Route::get('/show_product', [AdminController::Class , 'show_product']);
+Route::get('/delete_product/{id}', [AdminController::Class , 'delete_product']);
+Route::get('/update_product/{id}', [AdminController::Class , 'update_product']);
+Route::post('/update_product_submission/{id}', [AdminController::Class , 'update_product_submission']);
+
+
+Route::get('/product_details/{id}', [HomeController::Class , 'product_details']);
+
+Route::post('/add_cart/{id}', [HomeController::Class , 'add_cart']);
+Route::get('/show_cart', [HomeController::Class , 'show_cart']);
+Route::get('/remove_cart/{id}', [HomeController::Class , 'remove_cart']);
+
+
+Route::get('/cash_order', [HomeController::Class , 'cash_order']);

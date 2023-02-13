@@ -1,34 +1,21 @@
-<x-app-layout>
-</x-app-layout>
 <!DOCTYPE html>
-<html>
-<head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>admin dashboard</title>
-</head>
-<body>
+<html lang="en">
+  <head>
+  	@include('admin.css')
+  </head>
+  <body>
+    <div class="container-scroller">
 
-<h1>hi</h1>
-<h1>hi</h1>
-<h1>hi</h1>
-<h1>hi</h1>
-<h1>hi</h1>
-<h1>hi</h1>
-<h1>hi</h1>
-<h1>hi</h1>
-<h1>hi</h1>
-<h1>hi</h1>
-<h1>hi</h1>
-<h1>hi</h1>
-<h1>hi</h1>
-<h1>hi</h1>
-<h1>hi</h1>
-<h1>hi</h1>
-<h1>hi</h1>
-<h1>hi</h1>
-<h1>hi</h1>
-<h1>hi</h1>
-<h1>hi</h1>
-</body>
+      <!-- partial:partials/_sidebar.html -->
+      @include('admin.sidebar')
+      <!-- partial -->
+      @include('admin.header')
+        <!-- partial -->
+        @include('admin.body')
+
+    <!-- container-scroller -->
+    <!-- plugins:js -->
+    @include('admin.script')
+    <!-- End custom js for this page -->
+  </body>
 </html>
